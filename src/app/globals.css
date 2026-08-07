@@ -1,10 +1,20 @@
 @import "tailwindcss";
 
+@font-face {
+    font-family: 'Clash';
+    src: url('../fonts/ClashGrotesk-Variable.ttf');
+}
+
+@font-face {
+    font-family: 'Spline Sans';
+    src: url('../fonts/SplineSans-Variable.ttf');
+}
+
 :root {
     --primary: #F6F7EB;
     --secondary: #393E41;
     --accent-color: #E94F37;
-    --title-font: 'Clash Grotesk Variable';
+    --title-font: 'Clash';
     --para-font: 'Spline Sans';
 }
 
