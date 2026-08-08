@@ -4,7 +4,7 @@ import { motion } from "motion/react"
 
 const AboutMe = () => {
     return (
-        <div className="py-20">
+        <div className="py-25">
             <motion.h1
                 initial={{ opacity: 0, y: -45, filter: 'blur(10px)' }}
                 whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
