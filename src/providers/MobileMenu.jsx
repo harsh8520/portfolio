@@ -17,15 +17,16 @@ const MobileMenu = ({ setIsOpen, iconSize, isOpen }) => {
                 duration: 0.5,
 
                 staggerChildren: 0.08,
-                delayChildren: 0.45,
+                delayChildren: 0,
             },
         },
 
         exit: {
-            x: -15,
-            opacity: 0.01,
+            
+            opacity: 0,
+            filter: 'blur(20px)',
             transition: {
-                duration: 0.5,
+                duration: 0.6,
                 staggerChildren: 0.05,
                 staggerDirection: -1,
             },
@@ -48,8 +49,9 @@ const MobileMenu = ({ setIsOpen, iconSize, isOpen }) => {
         exit: {
             x: -15,
             opacity: 1,
+            
             transition: {
-                duration: 0.5,
+                duration: 0.3,
                 staggerChildren: 0.05,
                 staggerDirection: -1,
             }
@@ -69,7 +71,7 @@ const MobileMenu = ({ setIsOpen, iconSize, isOpen }) => {
             filter: "blur(0px)",
             x: 0,
             transition: {
-                duration: 0.45,
+                duration: 0.4,
                 ease: "easeOut",
             },
         },
@@ -79,7 +81,7 @@ const MobileMenu = ({ setIsOpen, iconSize, isOpen }) => {
             filter: "blur(10px)",
             x: -15,
             transition: {
-                duration: 0.5,
+                duration: 0.4,
                 ease: "easeIn",
             },
         },
@@ -107,7 +109,7 @@ const MobileMenu = ({ setIsOpen, iconSize, isOpen }) => {
             filter: "blur(10px)",
             y: 15,
             transition: {
-                duration: 0.5,
+                duration: 0.4,
                 ease: "easeIn",
             },
         },

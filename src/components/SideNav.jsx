@@ -63,9 +63,9 @@ export default function SideNav() {
                 </div>
             </div>
 
-            <div className="w-full flex justify-end">
+            <div className="fixed z-11 lg:hidden w-full flex justify-end">
                 <button
-                    className={`hamburger ${isOpen ? "open" : ""} z-11 lg:hidden`}
+                    className={`hamburger ${isOpen ? "open" : ""} z-11  lg:hidden`}
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label="Toggle Navigation"
                 >

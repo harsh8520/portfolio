@@ -111,7 +111,7 @@ const Herotext = () => {
                     ref={textRef}
                 >
                     I design and develop fast, scalable, and user-focused web
-                    applications using the <span>MERN</span> stack. From concept to
+                    applications using the <span className='accent'>MERN</span> stack. From concept to
                     deployment, I build digital experiences that combine clean
                     design with solid engineering.
                 </p>
