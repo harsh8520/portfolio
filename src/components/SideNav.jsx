@@ -13,55 +13,57 @@ export default function SideNav() {
 
     return (
         <>
-            <div className="hidden fixed mt-45 ml-12 lg:flex flex-col gap-12">
-                <nav className="flex flex-col gap-8 text-4xl justify-center">
-                    <Link href="/">Home</Link>
-                    <Link href="/#about">About</Link>
-                    <Link href="/#services">Services</Link>
-                    <Link href="/projects">Projects</Link>
-                </nav>
+            
+                <div className="hidden fixed mt-45 ml-12 lg:flex flex-col gap-12">
+                    <nav className="flex flex-col gap-8 text-4xl justify-center">
+                        <Link href="/">Home</Link>
+                        <Link href="/#about">About</Link>
+                        <Link href="/#services">Services</Link>
+                        <Link href="/projects">Projects</Link>
+                    </nav>
 
-                <div className="w-fit flex gap-8 flex-wrap">
-                    <a
-                        href="https://github.com/harsh8520"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <Image
-                            src="/github-icon.svg"
-                            alt="Github"
-                            width={iconSize}
-                            height={iconSize}
-                        />
-                    </a>
+                    <div className="w-fit flex gap-8 flex-wrap">
+                        <a
+                            href="https://github.com/harsh8520"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <Image
+                                src="/github-icon.svg"
+                                alt="Github"
+                                width={iconSize}
+                                height={iconSize}
+                            />
+                        </a>
 
-                    <a
-                        href="https://www.linkedin.com/in/harsh-asoriya-510b03216?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <Image
-                            src="/linkedin-icon.svg"
-                            alt="LinkedIn"
-                            width={iconSize}
-                            height={iconSize}
-                        />
-                    </a>
+                        <a
+                            href="https://www.linkedin.com/in/harsh-asoriya-510b03216?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <Image
+                                src="/linkedin-icon.svg"
+                                alt="LinkedIn"
+                                width={iconSize}
+                                height={iconSize}
+                            />
+                        </a>
 
-                    <a
-                        href="https://www.linkedin.com/in/harsh-asoriya-510b03216?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <Image
-                            src="/instagram-icon.svg"
-                            alt="Instagram"
-                            width={iconSize}
-                            height={iconSize}
-                        />
-                    </a>
+                        <a
+                            href="https://www.linkedin.com/in/harsh-asoriya-510b03216?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <Image
+                                src="/instagram-icon.svg"
+                                alt="Instagram"
+                                width={iconSize}
+                                height={iconSize}
+                            />
+                        </a>
+                    </div>
                 </div>
-            </div>
+                
 
             <div className="fixed z-11 lg:hidden w-full flex justify-end">
                 <button

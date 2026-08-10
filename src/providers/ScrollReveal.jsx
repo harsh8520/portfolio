@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useRef, useMemo } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -7,29 +9,46 @@ gsap.registerPlugin(ScrollTrigger);
 const ScrollReveal = ({
     children,
     scrollContainerRef,
+
     enableBlur = true,
     baseOpacity = 0.1,
     baseRotation = 3,
     blurStrength = 4,
-    containerClassName = '',
-    textClassName = '',
+
+    baseScale = 3,
+    baseY = 0,
+    stagger = 0.15,
+
+    animationStart = 'top 60%',
+    animationEnd = 'top 20%',
     rotationEnd = 'bottom bottom',
-    wordAnimationEnd = 'top 20%'
+
+    containerClassName = '',
+    textClassName = ''
 }) => {
     const containerRef = useRef(null);
 
     const splitText = useMemo(() => {
         const text = typeof children === 'string' ? children : '';
 
-        return text.split(/(\s+)/).map((word, index) => {
-            if (word.match(/^\s+$/)) return word;
+        return text.split(' ').map((word, wordIndex) => (
+            <span
+                className="inline-block"
+                key={wordIndex}
+            >
+                {word.split('').map((char, charIndex) => (
+                    <span
+                        className="inline-block letter"
+                        key={charIndex}
+                    >
+                        {char}
+                    </span>
+                ))}
 
-            return (
-                <span className="inline-block word" key={index}>
-                    {word}
-                </span>
-            );
-        });
+                {/* space between words */}
+                {wordIndex < text.split(' ').length - 1 && '\u00A0'}
+            </span>
+        ));
     }, [children]);
 
     useEffect(() => {
@@ -41,79 +60,108 @@ const ScrollReveal = ({
                 ? scrollContainerRef.current
                 : window;
 
-        // --------------------------------
-        // 1. ROTATION
-        // --------------------------------
+        const ctx = gsap.context(() => {
 
-        gsap.fromTo(
-            el,
-            {
-                transformOrigin: '0% 50%',
-                rotate: baseRotation
-            },
-            {
-                ease: 'none',
-                rotate: 0,
+            // --------------------------------
+            // 1. ROTATION
+            // --------------------------------
+
+            gsap.fromTo(
+                el,
+                {
+                    transformOrigin: '0% 50%',
+                    rotate: baseRotation
+                },
+                {
+                    rotate: 0,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: el,
+                        scroller,
+                        start: 'top 60%',
+                        end: rotationEnd,
+                        scrub: true
+                    }
+                }
+            );
+
+
+            // --------------------------------
+            // 2. LETTER REVEAL + BLUR + SCALE
+            // --------------------------------
+
+            const letterElements = el.querySelectorAll('.letter');
+
+            const letterTimeline = gsap.timeline({
                 scrollTrigger: {
                     trigger: el,
                     scroller,
-                    start: 'top 70%',
-                    end: rotationEnd,
-                    scrub: true
+                    start: animationStart,
+                    end: animationEnd,
+                    scrub: true,
                 }
-            }
-        );
+            });
 
-        const wordElements = el.querySelectorAll('.word');
+            letterTimeline.fromTo(
+                letterElements,
+                {
+                    opacity: baseOpacity,
 
-        // --------------------------------
-        // 2. WORD REVEAL + BLUR
-        // --------------------------------
+                    // Your custom scale effect
+                    scale: baseScale,
 
-        const wordTimeline = gsap.timeline({
-            scrollTrigger: {
-                trigger: el,
-                scroller,
-                start: 'top 70%',
-                end: wordAnimationEnd,
-                scrub: true
-            }
-        });
+                    // Optional vertical movement
+                    y: baseY,
 
-        wordTimeline.fromTo(
-            wordElements,
-            {
-                opacity: baseOpacity,
-                y: 20,
-                filter: enableBlur
-                    ? `blur(${blurStrength}px)`
-                    : 'blur(0px)'
-            },
-            {
-                opacity: 1,
-                y: 0,
-                filter: 'blur(0px)',
-                stagger: 0.08,
-                ease: 'none'
-            }
-        );
+                    filter: enableBlur
+                        ? `blur(${blurStrength}px)`
+                        : 'blur(0px)',
+                },
+                {
+                    opacity: 1,
 
-        // --------------------------------
-        // CLEANUP
-        // --------------------------------
+                    filter: 'blur(0px)',
+
+                    // Your custom scale effect
+                    scale: 1,
+
+                    y: 0,
+
+                    ease: 'none',
+
+                    // Letter-by-letter
+                    stagger: stagger,
+                }
+            );
+
+        }, el);
+
+
+        // Refresh after route changes/layout settles
+        const refreshTimer = setTimeout(() => {
+            ScrollTrigger.refresh();
+        }, 100);
+
 
         return () => {
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+            clearTimeout(refreshTimer);
+            ctx.revert();
         };
+
     }, [
         scrollContainerRef,
         enableBlur,
-        baseRotation,
         baseOpacity,
-        rotationEnd,
-        wordAnimationEnd,
-        blurStrength
+        baseRotation,
+        blurStrength,
+        baseScale,
+        baseY,
+        stagger,
+        animationStart,
+        animationEnd,
+        rotationEnd
     ]);
+
 
     return (
         <h2
@@ -121,7 +169,7 @@ const ScrollReveal = ({
             className={`my-5 ${containerClassName}`}
         >
             <p
-                className={`text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold ${textClassName}`}
+                className={` w-full leading-[1.5] font-semibold ${textClassName}`}
             >
                 {splitText}
             </p>

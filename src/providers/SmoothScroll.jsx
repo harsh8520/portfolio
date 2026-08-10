@@ -9,9 +9,11 @@ const SmoothScroll = ({ children }) => {
             root
             options={{
                 lerp: 0.06,
-                wheelMultiplier: 0.3,
+                wheelMultiplier: 0.8,
                 smoothWheel: true,
-                
+                syncTouch: true,
+                syncTouchLerp: 0.1,
+                touchMultiplier: 0.8,
             }}
         >
             {children}
