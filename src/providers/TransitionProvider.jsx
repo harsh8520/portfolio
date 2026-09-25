@@ -54,7 +54,7 @@ export default function TransitionProvider({ children }) {
             y: "0%",
             duration: 0.8,
             ease: "power4.out",
-            stagger: 0.1,
+            stagger: 0.075,
         }, "-=0.6");
 
         return tl;
@@ -72,12 +72,12 @@ export default function TransitionProvider({ children }) {
             y: "100%",
             duration: 1,
             ease: "power4.out",
-            stagger: 0.1,
+            stagger: 0.075,
         })
 
         tl.to(blocksRef.current, {
             scaleX: 0,
-            duration: 0.8,
+            duration: 1,
             ease: "hop",
             stagger: 0.075,
         }, '-=1.2');

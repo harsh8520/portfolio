@@ -1,4 +1,5 @@
 'use client'
+
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Image from 'next/image'
@@ -13,14 +14,21 @@ const FeaturedWork = () => {
     const project2Ref = useRef(null)
     const viewMoreRef = useRef(null)
 
-    
-
     useLayoutEffect(() => {
 
         const section = sectionRef.current
         const viewMore = viewMoreRef.current
 
         if (!section || !viewMore) return
+
+        // --------------------------------
+        // INITIAL VIEW MORE STATE
+        // --------------------------------
+
+        gsap.set(viewMore, {
+            pointerEvents: 'none',
+        })
+
 
         // --------------------------------
         // HOVER ELEMENTS
@@ -44,6 +52,7 @@ const FeaturedWork = () => {
             gsap.to(arrow, {
                 rotate: 45,
                 duration: 0.45,
+                display: 'block',
                 ease: 'power3.out'
             })
         }
@@ -63,10 +72,8 @@ const FeaturedWork = () => {
             })
         }
 
-        // Add hover listeners
         viewMore.addEventListener('mouseenter', enter)
         viewMore.addEventListener('mouseleave', leave)
-        
 
 
         // --------------------------------
@@ -95,7 +102,10 @@ const FeaturedWork = () => {
             })
 
 
+            // --------------------------------
             // PROJECT 1
+            // --------------------------------
+
             tl.to(project1Ref.current, {
                 x: '-300vw',
                 duration: 1,
@@ -103,20 +113,30 @@ const FeaturedWork = () => {
             })
 
 
+            // --------------------------------
             // PROJECT 2
+            // --------------------------------
+
             tl.to(project2Ref.current, {
-                x: '-300vw',
+                x: '-260vw',
                 duration: 1,
                 ease: 'none',
             }, '-=0.6')
 
 
+            // --------------------------------
             // VIEW MORE
+            // --------------------------------
+
             tl.to(viewMore, {
                 x: '-50%',
                 opacity: 1,
                 duration: 0.3,
                 ease: 'none',
+
+                onStart: () => {
+                    viewMore.style.pointerEvents = 'auto'
+                },
             })
 
         }, section)
@@ -130,25 +150,35 @@ const FeaturedWork = () => {
 
             viewMore.removeEventListener('mouseenter', enter)
             viewMore.removeEventListener('mouseleave', leave)
+
             ctx.revert()
         }
 
     }, [])
 
     return (
-        <section className='relative h-screen overflow-hidden ' ref={sectionRef}>
-            <div className='h-[80%] w-full relative top-[50%] translate-y-[-50%]  '>
+        <section
+            className='relative h-screen overflow-hidden'
+            ref={sectionRef}
+        >
+
+            <div className='h-[80%] w-full relative top-[50%] translate-y-[-50%]'>
+
                 {/* TITLE */}
+
                 <h2 className="absolute w-full text-center top-[50%] right-[50%] translate-x-[50%] translate-y-[-50%] font-semibold title-text text-5xl">
                     FEATURED WORK
                 </h2>
 
-                <div className='relative w-screen h-full '>
+
+                <div className='relative w-screen h-full'>
+
                     {/* PROJECT 1 */}
                     <Link
                         href='/projects/shiv-shakti'
                         ref={project1Ref}
-                        className="absolute w-[150%] left-[95%]">
+                        className="absolute w-[150%] left-[95%] lg:w-[80%]"
+                    >
                         <img src="/project-1.png" />
                     </Link>
 
@@ -158,41 +188,40 @@ const FeaturedWork = () => {
                     <Link
                         href='/projects/budget-quest-saga'
                         ref={project2Ref}
-                        className="absolute w-[150%] bottom-0 right-[-200%]">
+                        className="absolute w-[150%] bottom-0 md:bottom-0 right-[-200%] lg:right-[-80%] lg:w-[80%]"
+                    >
                         <img src="/project-2.png" />
                     </Link>
                 </div>
 
+                {/* VIEW MORE */}
                 <Link
                     ref={viewMoreRef}
                     href="/projects"
                     className="
-                            
-                            flex
-                            justify-center
-                            items-center
-                            w-max
-                            gap-4
-                            absolute
-                            z-30
-                            top-[60%]
-                            left-[50%]
-                            translate-x-[0%]
-                            translate-y-[-50%]
-                            opacity-0
-                            cursor-pointer
-                        "
-                        
+                        flex
+                        justify-center
+                        items-center
+                        w-max
+                        gap-4
+                        absolute
+                        z-30
+                        top-[60%]
+                        left-[50%]
+                        translate-x-[0%]
+                        translate-y-[-50%]
+                        opacity-0
+                        pointer-events-none
+                        cursor-pointer
+                    "
                 >
                     {/* TEXT */}
                     <div className="relative h-max overflow-hidden">
 
-                        {/* Current text */}
                         <h3 className="view-text block text-4xl w-fit font-semibold">
                             View More
                         </h3>
 
-                        {/* Revealed text */}
                         <h3 className="view-text block absolute left-0 top-full text-4xl w-fit font-semibold">
                             View More
                         </h3>

@@ -10,7 +10,7 @@ const Marque = () => {
     }
 
     return (
-        <div className="w-full py-8">
+        <div className="w-full py-8 lg:py-16">
 
             <ScrollVelocity
                 texts={[

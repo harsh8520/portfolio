@@ -4,66 +4,70 @@ import MobileMenu from "@/providers/MobileMenu";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 export default function SideNav() {
     const iconSize = 32
     const [isOpen, setIsOpen] = useState(false)
+    const pathName = usePathname()
 
+    console.log(pathName)
+    if(pathName.startsWith('/projects/')) return null
 
     return (
         <>
-            
-                <div className="hidden fixed mt-45 ml-12 lg:flex flex-col gap-12">
-                    <nav className="flex flex-col gap-8 text-4xl justify-center">
-                        <Link href="/">Home</Link>
-                        <Link href="/#about">About</Link>
-                        <Link href="/#services">Services</Link>
-                        <Link href="/projects">Projects</Link>
-                    </nav>
 
-                    <div className="w-fit flex gap-8 flex-wrap">
-                        <a
-                            href="https://github.com/harsh8520"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <Image
-                                src="/github-icon.svg"
-                                alt="Github"
-                                width={iconSize}
-                                height={iconSize}
-                            />
-                        </a>
+            <div className="hidden fixed pt-50 left-10 lg:flex flex-col gap-12 z-20">
+                <nav className="flex flex-col gap-8 text-3xl justify-center">
+                    <Link href="/">Home</Link>
+                    <Link href="/#about">About</Link>
+                    <Link href="/#services">Services</Link>
+                    <Link href="/projects">Projects</Link>
+                </nav>
 
-                        <a
-                            href="https://www.linkedin.com/in/harsh-asoriya-510b03216?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <Image
-                                src="/linkedin-icon.svg"
-                                alt="LinkedIn"
-                                width={iconSize}
-                                height={iconSize}
-                            />
-                        </a>
+                <div className="w-fit flex gap-8 flex-wrap">
+                    <a
+                        href="https://github.com/harsh8520"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <Image
+                            src="/github-icon.svg"
+                            alt="Github"
+                            width={iconSize}
+                            height={iconSize}
+                        />
+                    </a>
 
-                        <a
-                            href="https://www.linkedin.com/in/harsh-asoriya-510b03216?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <Image
-                                src="/instagram-icon.svg"
-                                alt="Instagram"
-                                width={iconSize}
-                                height={iconSize}
-                            />
-                        </a>
-                    </div>
+                    <a
+                        href="https://www.linkedin.com/in/harsh-asoriya-510b03216?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <Image
+                            src="/linkedin-icon.svg"
+                            alt="LinkedIn"
+                            width={iconSize}
+                            height={iconSize}
+                        />
+                    </a>
+
+                    <a
+                        href="https://www.linkedin.com/in/harsh-asoriya-510b03216?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <Image
+                            src="/instagram-icon.svg"
+                            alt="Instagram"
+                            width={iconSize}
+                            height={iconSize}
+                        />
+                    </a>
                 </div>
-                
+            </div>
+
 
             <div className="fixed z-11 lg:hidden w-full flex justify-end">
                 <button

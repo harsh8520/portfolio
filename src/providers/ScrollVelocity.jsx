@@ -33,7 +33,7 @@ export const ScrollVelocity = ({
     velocity = 100,
     className = '',
     damping = 50,
-    stiffness = 400,
+    stiffness = 500,
     numCopies = 6,
     velocityMapping = { input: [0, 1000], output: [0, 5] },
     parallaxClassName,

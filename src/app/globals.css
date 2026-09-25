@@ -21,6 +21,7 @@
 body {
     background: var(--primary);
     color: var(--secondary);
+   
 }
 
 .transition-grid {
@@ -117,10 +118,9 @@ body {
 
 .hero-image {
     filter: grayscale();
-    padding-top: 2rem;
     transform: scaleX(-1);
-    width: auto;
-    height: auto;
+    width: 300px;
+    height: 300px;
 }
 
 .custom-scroll-text {
@@ -132,7 +132,12 @@ body {
     font-weight: 300;
     text-align: center;
     line-height: 2;
-    width: fit-content;
+}
+
+@media (min-width: 1024px) {
+    .about-text{
+        font-size: 38px;
+    }
 }
 
 /* .glass {

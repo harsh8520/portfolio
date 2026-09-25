@@ -1,76 +1,74 @@
-
+''
 import SplitText from "@/providers/SplitText";
-import Herotext from "@/providers/Herotext";
+import Herotext from "@/components/Herotext";
 
 export default function HeroSection() {
-    
+
     return (
         <>
-            <div className="">
-                <SplitText
-                    text="BUILDING "
-                    className="title-text font-semibold text-4xl tracking-tight leading-8"
-                    delay={15}
-                    duration={0.5}
-                    ease="power3.out"
-                    splitType="chars"
-                    from={{ opacity: 0, y: 40 }}
-                    to={{ opacity: 1, y: 0 }}
-                    threshold={0.6}
-                    rootMargin="-100px"
-                    textAlign="left"
-                    tag="h1"
-                    showCallBack
-                />
-                <SplitText
-                    text="&nbsp; MODERN"
-                    className="text-(--accent-color) title-text font-semibold text-4xl tracking-tight leading-8"
-                    delay={15}
-                    duration={0.5}
-                    ease="power3.out"
-                    splitType="chars"
-                    from={{ opacity: 0, y: 40 }}
-                    to={{ opacity: 1, y: 0 }}
-                    threshold={0.6}
-                    rootMargin="-100px"
-                    textAlign="left"
-                    tag="h1"
-                    showCallBack
-                />
-                <SplitText
-                    text="DIGITAL EXPERIENCES"
-                    className="title-text font-semibold text-4xl tracking-tight leading-8"
-                    delay={15}
-                    duration={1.5}
-                    ease="power3.out"
-                    splitType="chars"
-                    from={{ opacity: 0, y: 40 }}
-                    to={{ opacity: 1, y: 0 }}
-                    threshold={0.6}
-                    rootMargin="-100px"
-                    textAlign="left"
-                    tag="h1"
-                    showCallBack
-                />
-                {/* <h1 className="title-text font-semibold text-4xl tracking-tight leading-8">BUILDING <span>MODERN</span> DIGITAL EXPERIENCES</h1> */}
-                {/* <p className="para-text font-light text-xl">FULL STACK MERN DEVELOPER</p> */}
 
-                <SplitText
-                    text="FULL STACK MERN DEVELOPER"
-                    className="para-text font-light text-xl tracking-tight leading-8"
-                    delay={20}
-                    duration={2}
-                    ease="power3.out"
-                    splitType="chars"
-                    from={{ opacity: 0, y: 40 }}
-                    to={{ opacity: 1, y: 0 }}
-                    threshold={0.1}
-                    rootMargin="-100px"
-                    textAlign="left"
-                    tag="p"
-                    showCallBack
-                />
-            </div>
+            <SplitText
+                text="BUILDING"
+                className="title-text font-semibold text-4xl lg:text-7xl tracking-tight leading-8 lg:leading-[0.8]"
+                delay={25}
+                duration={1}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+                rootMargin="-100px"
+                textAlign="left"
+                tag="h1"
+                showCallBack
+            />
+            <SplitText
+                text="&nbsp;MODERN&nbsp;"
+                className="text-(--accent-color) title-text font-semibold text-4xl lg:text-7xl tracking-tight leading-8 lg:leading-[0.8]"
+                delay={25}
+                duration={1}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+                rootMargin="-100px"
+                textAlign="left"
+                tag="h1"
+                showCallBack
+            />
+            <SplitText
+                text="DIGITAL EXPERIENCES"
+                className="title-text font-semibold text-4xl lg:text-7xl tracking-tight leading-8 lg:leading-[0.8]"
+                delay={50}
+                duration={1}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+                rootMargin="-100px"
+                textAlign="left"
+                tag="h1"
+                showCallBack
+            />
+            <br />
+            <SplitText
+                text="FULL STACK MERN DEVELOPER"
+                className="para-text font-light text-xl lg:text-[32px] tracking-tight leading-8"
+                delay={20}
+                duration={1}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+                rootMargin="-100px"
+                textAlign="left"
+                tag="p"
+                showCallBack
+            />
+
 
             <Herotext />
         </>
