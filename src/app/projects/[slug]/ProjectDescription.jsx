@@ -122,7 +122,7 @@ const ProjectDetailClient = ({ project }) => {
                     {project.title}
                 </h1>
 
-                <div className="flex flex-col gap-20">
+                <div className="flex flex-col gap-25">
                     <div className="w-full flex flex-col z-2 gap-20 py-25 lg:py-30">
                         {project.images.map((img, i) => (
                             <motion.img
@@ -141,8 +141,8 @@ const ProjectDetailClient = ({ project }) => {
                         ))}
                     </div>
 
-                    <div className="border-t-2 border-(--accent-color) h-80vh lg:h-[80vh] flex flex-col gap-8">
-                        <div className="w-full lg:w-[80%] flex flex-col gap-8 pt-8" ref={descriptionRef} >
+                    <div className="border-t-2 border-(--accent-color) lg:h-[80vh] flex flex-col gap-8">
+                        <div className="w-full md:w-full lg:w-[80%] flex flex-col gap-8 pt-8" ref={descriptionRef} >
                             {project.description.map((para, i) => (
                                 <p
                                     key={i}

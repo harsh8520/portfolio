@@ -13,7 +13,7 @@ const SmoothScroll = ({ children }) => {
                 smoothWheel: true,
                 syncTouch: true,
                 touchMultiplier: 1,
-                syncTouchLerp: 0.04
+                syncTouchLerp: 0.07
             }}
         >
             {children}

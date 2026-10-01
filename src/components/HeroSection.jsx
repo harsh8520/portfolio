@@ -1,4 +1,4 @@
-''
+
 import SplitText from "@/providers/SplitText";
 import Herotext from "@/components/Herotext";
 
